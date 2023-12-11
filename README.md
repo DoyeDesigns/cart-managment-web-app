@@ -4,8 +4,6 @@ An application that allows users to manage shopping cart items.
 
 ### Getting Started
 
-First, run the development server:
-
 ```bash
 clone the repository git clone https://github.com/DoyeDesigns/web3bridge-assessment.git
 - cd web3bridge-assessment
