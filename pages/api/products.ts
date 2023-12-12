@@ -1,34 +1,34 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { promises as fs } from 'fs';
 
 import products from '../../services/products-list-data.json'
+import ProductsList from '@/components/productCard';
 
-type ResponseData = [
-  {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    image: string;
-  },
-];
+// type ResponseData = | {
+//   product: {
+//     id: number;
+//     name: string;
+//     price: number;
+//     description: string;
+//     image: string;
+//   };
+// } | { error: string };
+
+// type ResponseData = | {
+//   products: [{
+//         id: number;
+//         name: string;
+//         price: number;
+//         description: string;
+//         image: string;
+//       }];
+//   } | { error: string };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse
 ) {
-  // 1. Fetch the actual product data using your chosen method (e.g., file reading, database access)
-  const productData = await getProducts();
-
-  // 2. Check if data retrieval was successful
-  if (!productData) {
-    res.status(500).json({ error: 'Unable to retrieve product data' });
-    return;
-  }
-
-  // 4. Send the response with the fetched data
-  res.status(200).json(productData);
+  const file = await fs.readFile(process.cwd() + '/app/data.json', 'utf8');
+  const data = JSON.parse(file);
 }
 
-async function getProducts(): Promise<ResponseData | null> {
-    return products;
-  }
