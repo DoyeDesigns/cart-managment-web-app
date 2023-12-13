@@ -7,18 +7,21 @@ interface Product {
   price: number;
   quantity: number;
   initialQuantity: number;
+  image: string;
 }
 
 interface PriceState {
   cart: Product[];
   productQuantities: Record<number, number>;
   totalPrice: number;
+  totalQuantity: number;
 }
 
 const initialState: PriceState = {
   cart: [],
   productQuantities: {},
   totalPrice: 0,
+  totalQuantity: 0,
 };
 
 const priceSlice = createSlice({
@@ -38,9 +41,9 @@ const priceSlice = createSlice({
       state.productQuantities[id] = (state.productQuantities[id] || 0) + 1;
 
       // Update total price here
-      state.totalPrice = state.cart.reduce((total, product) => {
-        return total + product.price * product.quantity;
-      }, 0);
+      state.totalPrice = parseFloat(
+        state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+      );
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
       const productId = action.payload;
@@ -56,16 +59,16 @@ const priceSlice = createSlice({
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) - 1;
 
         // Update total price here
-        state.totalPrice = state.cart.reduce((total, product) => {
-          return total + product.price * product.quantity;
-        }, 0);
+        state.totalPrice = parseFloat(
+          state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+        );
       }
     },
     updateTotalPrice: (state) => {
       // Update total price here (same logic as addToCart and removeFromCart)
-      state.totalPrice = state.cart.reduce((total, product) => {
-        return total + product.price * product.quantity;
-      }, 0);
+      state.totalPrice = parseFloat(
+        state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+      );
     },
     plus1: (state, action: PayloadAction<number>) => {
       const productId = action.payload;
@@ -77,9 +80,9 @@ const priceSlice = createSlice({
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) + 1;
 
         // Update total price here
-        state.totalPrice = state.cart.reduce((total, product) => {
-          return total + product.price * product.quantity;
-        }, 0);
+        state.totalPrice = parseFloat(
+          state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+        );
       } 
     },
     minus1: (state, action: PayloadAction<number>) => {
@@ -90,13 +93,36 @@ const priceSlice = createSlice({
         existingProduct.quantity -= 1;
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) - 1;
         // Update total price here
-        state.totalPrice = state.cart.reduce((total, product) => {
-          return total - product.price * product.quantity;
-        }, 0);
+        state.totalPrice = parseFloat(
+          state.cart.reduce((total, product) => total - product.price * product.quantity, 0).toFixed(2)
+        );
+      }
+    },
+    deleteFromCart: (state, action: PayloadAction<number>) => {
+      const productId = action.payload;
+      const deletedProduct = state.cart.find((product) => product.id === productId);
+
+      if (deletedProduct) {
+        const updatedCart = state.cart.filter((product) => product.id !== productId);
+        state.cart = updatedCart;
+
+        // Update total price here
+        state.totalPrice = parseFloat(
+          updatedCart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+        );
+
+        // Update total quantity
+        state.totalQuantity -= deletedProduct.quantity;
+
+        // Reset quantity of the deleted product
+        state.productQuantities[productId] = 0;
+
+        // Reset quantity to the initial quantity of the deleted product
+        deletedProduct.quantity = deletedProduct.initialQuantity;
       }
     },
   },
 });
 
-export const { addToCart, removeFromCart, updateTotalPrice, minus1, plus1 } = priceSlice.actions;
+export const { addToCart, removeFromCart, updateTotalPrice, minus1, plus1, deleteFromCart } = priceSlice.actions;
 export default priceSlice.reducer;

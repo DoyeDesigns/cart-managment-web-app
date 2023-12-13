@@ -1,10 +1,11 @@
 'use client'
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import data from '../services/products-list-data.json'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
-import { addToCart, removeFromCart, updateTotalPrice, plus1, minus1 } from '@/state/counter/priceSlice';
+import { addToCart, removeFromCart, updateTotalPrice, plus1, minus1, deleteFromCart } from '@/state/counter/priceSlice';
 import { increament, decreament } from '@/state/counter/counterSlice';
 
 // const numOfProduct
@@ -16,6 +17,7 @@ interface Product {
   price: number;
   quantity: number;
   initialQuantity: number;
+  image: string;
 }
 
 function ProductsList() {
@@ -48,11 +50,12 @@ function ProductsList() {
     dispatch(removeFromCart(productId));
   };
 
-  const plus1Handler = (productId: number, productPrice: number) => {
-    // const existingProduct = cart.find((product) => product.id === productId);
+  const deleteFromCartHandler = (productId: number) => {
+    dispatch(deleteFromCart(productId));
+    dispatch(updateTotalPrice());
+  };
 
-    // if (existingProduct) {
-      // Product is already in the cart, increase quantity
+  const plus1Handler = (productId: number, productPrice: number) => {
       dispatch(plus1(productId));
       dispatch(updateTotalPrice());
       dispatch(increament())
@@ -60,10 +63,6 @@ function ProductsList() {
   };
 
   const minus1Handler = (productId: number, productPrice: number) => {
-    // const existingProduct = cart.find((product) => product.id === productId);
-    
-    // if (existingProduct) {
-      // Product is already in the cart, increase quantity
       dispatch(minus1(productId));
       dispatch(updateTotalPrice());
       dispatch(decreament());
@@ -75,15 +74,26 @@ function ProductsList() {
     <ul className='flex flex-wrap justify-center gap-4 mx-auto'>
       {data.map((product: Product) => (
         <li key={product.id}>
-          <div className="card w-60 bg-base-100 shadow-xl">
-            <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-            <div className="card-body">
-              <h2 className="card-title">
-              {product.name}
-              </h2>
-              <p>{product.description}</p>
+          <div className="card w-64 h-96 bg-base-100 shadow-xl">
+            <figure><Image src={product.image} alt="Shoes" height={100} width={270} className='object-cover'/></figure>
+            <div className="card-body p-4">
+              <div className='flex gap-4 justify-between items-center'>
+                <h2 className="card-title">
+                {product.name}
+                </h2>
+                <div className="">$<span id='product-price' className='text-sm'>{product.price}</span></div>
+              </div>
+              <p className='text-sm'>{product.description}</p>
               <div className='flex justify-between'>
-              <button onClick={() => addToCartHandler(product)}>Add to cart</button>
+              {cart.some((item) => item.id === product.id) ? (
+                <button onClick={() => deleteFromCartHandler(product.id)}>
+                  Remove from cart
+                </button>
+              ) : (
+                <button onClick={() => addToCartHandler(product)}>
+                  Add to cart
+                </button>
+              )}
               <span className='flex gap-4'>
                 <button id='minus-one' onClick={() => minus1Handler(product.id, product.price)}>
                   -
@@ -95,11 +105,6 @@ function ProductsList() {
               </span>
               </div>
               <div className="card-actions justify-start">
-                <div className="">#<span id='product-price'>{product.price}</span></div>
-              </div>
-              <div className="card-actions justify-end">
-                <div className="badge badge-outline">Fashion</div>
-                <div className="badge badge-outline">Products</div>
               </div>
             </div>
           </div>
