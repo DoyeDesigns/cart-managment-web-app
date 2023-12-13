@@ -7,6 +7,7 @@ interface Product {
   price: number;
   quantity: number;
   initialQuantity: number;
+  image: string;
 }
 
 interface PriceState {

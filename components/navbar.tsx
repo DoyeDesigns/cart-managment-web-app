@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "@/state/counter/selector";
 
 export default function NavBar() {
-    const count = useSelector((state: RootState) => state.counter.value);
+    // const count = useSelector((state: RootState) => state.counter.value);
     const totalPrice = useSelector((state: RootState) => state.price.totalPrice);
     const totalQuantity = useSelector(selectTotalQuantity);
 
@@ -27,7 +27,7 @@ export default function NavBar() {
                             <span className="font-bold text-lg">{totalQuantity} Items</span>
                             <span className="text-info">Subtotal: ${totalPrice}</span>
                             <div className="card-actions">
-                                <button className="btn btn-primary btn-block">View cart</button>
+                                <button className="btn btn-primary btn-block"><a href="/cart">View cart</a></button>
                             </div>
                         </div>
                     </div>

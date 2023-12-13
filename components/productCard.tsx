@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import data from '../services/products-list-data.json'
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ interface Product {
   price: number;
   quantity: number;
   initialQuantity: number;
+  image: string;
 }
 
 function ProductsList() {
@@ -75,8 +77,8 @@ function ProductsList() {
     <ul className='flex flex-wrap justify-center gap-4 mx-auto'>
       {data.map((product: Product) => (
         <li key={product.id}>
-          <div className="card w-60 bg-base-100 shadow-xl">
-            <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+          <div className="card w-60 h-96 bg-base-100 shadow-xl">
+            <figure><Image src={product.image} alt="Shoes" height={100} width={270} className='object-cover'/></figure>
             <div className="card-body">
               <h2 className="card-title">
               {product.name}
