@@ -66,7 +66,7 @@ function CouponInput() {
           </div>
           <input onChange={(e) => setCouponValue(e.target.value)} type="text" placeholder="Enter coupon" className="input input-bordered w-full max-w-xs" />
         </div>
-        <button className="btn btn-primary rounded-md" onClick={() => useCoupon}>{coupon ? 'Remove coupon' : 'Use coupon'}</button>
+        <button className="btn btn-primary rounded-md" onClick={useCoupon}>{coupon ? 'Remove coupon' : 'Use coupon'}</button>
       </div>
     </label>
   )
