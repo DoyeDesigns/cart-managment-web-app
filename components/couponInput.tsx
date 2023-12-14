@@ -49,7 +49,7 @@ function CouponInput() {
     <label className="form-control w-full max-w-xs flex">
       <div className="text-center">
         <div className="flex justify-center">
-          <Image src='/bubble-gum-payment-process-1.png' alt='payment illustration' width={180} height={180} className="rounded-full" />
+          <Image src='./bubble-gum-payment-process-1.png' alt='payment illustration' width={180} height={180} className="rounded-full" />
         </div>
         <p className="text-lg font-semibold mb-4">Total Amount: ${coupon ? discountedTotal.toFixed(2) : totalPrice}</p>
         <button className="btn btn-primary rounded-lg mb-4">Pay now</button>
