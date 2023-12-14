@@ -21,21 +21,9 @@ interface Product {
 }
 
 function ProductsList() {
-  //create a cart variable
-  // const [cart, setCart] = useState<Product[]>([]);
-  // const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  // const [productQuantities, setProductQuantities] = useState<{ [productId: number]: number }>({});
   const cart = useSelector((state: RootState) => state.price.cart);
   const productQuantities = useSelector((state: RootState) => state.price.productQuantities);
   const dispatch = useDispatch();
-
-  //add to cart function
-  // const addToCart = (product: Product) => {
-  //   //check if product is lredy in cart
-  //   if (!cart.some((item) => item.id === product.id))
-  //   setCart((prevCart) => [...prevCart, product]);
-  //   setSelectedProduct(product);
-  // };
 
   useEffect(() => {
     console.log(cart)
@@ -71,11 +59,11 @@ function ProductsList() {
 
 
   return (
-    <ul className='flex flex-wrap justify-center gap-4 mx-auto'>
+    <ul className='flex flex-wrap justify-center gap-4 mx-auto mb-5'>
       {data.map((product: Product) => (
         <li key={product.id}>
           <div className="card w-64 h-96 bg-base-100 shadow-xl">
-            <figure><Image src={product.image} alt="Shoes" height={100} width={270} className='object-cover'/></figure>
+            <figure><Image src={product.image} alt={product.name} height={100} width={270} className='object-cover'/></figure>
             <div className="card-body p-4">
               <div className='flex gap-4 justify-between items-center'>
                 <h2 className="card-title">
@@ -84,22 +72,22 @@ function ProductsList() {
                 <div className="">$<span id='product-price' className='text-sm'>{product.price}</span></div>
               </div>
               <p className='text-sm'>{product.description}</p>
-              <div className='flex justify-between'>
+              <div className='flex gap-1 justify-between'>
               {cart.some((item) => item.id === product.id) ? (
-                <button onClick={() => deleteFromCartHandler(product.id)}>
+                <button className='btn btn-primary p-2 rounded-md' onClick={() => deleteFromCartHandler(product.id)}>
                   Remove from cart
                 </button>
               ) : (
-                <button onClick={() => addToCartHandler(product)}>
+                <button className='btn btn-primary p-2 rounded-md' onClick={() => addToCartHandler(product)}>
                   Add to cart
                 </button>
               )}
-              <span className='flex gap-4'>
-                <button id='minus-one' onClick={() => minus1Handler(product.id, product.price)}>
+              <span className='flex gap-4 items-center'>
+                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='minus-one' onClick={() => minus1Handler(product.id, product.price)}>
                   -
                 </button>
                 <span>{productQuantities[product.id] || 0}</span>
-                <button id='plus-one' onClick={() => plus1Handler(product.id, product.price)}>
+                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='plus-one' onClick={() => plus1Handler(product.id, product.price)}>
                   +
                 </button>
               </span>

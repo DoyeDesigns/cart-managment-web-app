@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Product 1",
-      "price": 70.99,
+      "price": 70,
       "description": "Air Force 1",
       "image": "/Air Force 1 Shadow Pastel Custom.jpg",
       "quantity": 0,
@@ -11,7 +11,7 @@
     {
         "id": 2,
         "name": "Product 2",
-        "price": 69.99,
+        "price": 69,
         "description": "Air Jordan 1",
         "image": "/Click To Buy Cheap Air Jordan 1 High Sale, Buy Best Air Jordan 1 High Online.jpg",
         "quantity": 0,
@@ -20,7 +20,7 @@
       {
         "id": 3,
         "name": "Product 3",
-        "price": 48.99,
+        "price": 48,
         "description": "Nike SB Dunk",
         "image": "/Click To Buy Cheap Nike SB Dunk To Buy _ Shop For Nike SB Dunk Online.jpg",
         "quantity": 0,
@@ -29,7 +29,7 @@
       {
         "id": 4,
         "name": "Product 4",
-        "price": 37.99,
+        "price": 37,
         "description": "Jordan 1 Low Retro Shoes",
         "image": "/Click To Buy Purchase Jordan 1 Low Retro Shoes _ Cheap Air Jordan 1 Low For Sale.jpg",
         "quantity": 0,
@@ -38,7 +38,7 @@
       {
         "id": 5,
         "name": "Product 5",
-        "price": 46.99,
+        "price": 46,
         "description": "Description of Product 5",
         "image": "/download (1).jpg",
         "quantity": 0,
@@ -47,7 +47,7 @@
       {
         "id": 6,
         "name": "Product 6",
-        "price": 56.99,
+        "price": 56,
         "description": "Drippy pastel custom sneakers",
         "image": "/Drippy _ Pastel Custom Sneakers _ 200+ Designs.jpg",
         "quantity": 0,
@@ -56,7 +56,7 @@
       {
         "id": 7,
         "name": "Product 7",
-        "price": 86.99,
+        "price": 86,
         "description": "Nike air jordan 1 zoom cmft celestine blue sail",
         "image": "/NIKE AIR JORDAN 1 ZOOM CMFT CELESTINE BLUE SAIL DQ5091-041.jpg",
         "quantity": 0,
@@ -65,7 +65,7 @@
       {
         "id": 8,
         "name": "Product 8",
-        "price": 60.99,
+        "price": 60,
         "description": "Nike air force",
         "image": "/Nike mens Air Force.jpg",
         "quantity": 0,
@@ -74,7 +74,7 @@
       {
         "id": 9,
         "name": "Product 9",
-        "price": 59.99,
+        "price": 59,
         "description": "Nike air jordan",
         "image": "/Nike Air Jordan 1.jpg",
         "quantity": 0,
@@ -83,7 +83,7 @@
       {
         "id": 10,
         "name": "Product 10",
-        "price": 89.99,
+        "price": 89,
         "description": "Nike air jordan",
         "image": "/Nike Jordan 1.jpg",
         "quantity": 0,

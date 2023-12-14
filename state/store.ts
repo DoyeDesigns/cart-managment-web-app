@@ -3,6 +3,7 @@ import counterReducer from './counter/counterSlice';
 import priceReducer from './counter/priceSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import couponReducer from "./counter/couponSlice";
 
 const persistConfig = {
     key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
-        price: persistedReducer
+        price: persistedReducer,
+        coupon: couponReducer,
     },
 })
 

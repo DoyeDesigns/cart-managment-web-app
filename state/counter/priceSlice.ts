@@ -58,14 +58,14 @@ const priceSlice = createSlice({
 
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) - 1;
 
-        // Update total price here
+        // Update total price
         state.totalPrice = parseFloat(
           state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
         );
       }
     },
     updateTotalPrice: (state) => {
-      // Update total price here (same logic as addToCart and removeFromCart)
+      // Update total price (same logic as addToCart and removeFromCart)
       state.totalPrice = parseFloat(
         state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
       );
@@ -79,7 +79,7 @@ const priceSlice = createSlice({
         existingProduct.quantity += 1;
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) + 1;
 
-        // Update total price here
+        // Update total price
         state.totalPrice = parseFloat(
           state.cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
         );
@@ -92,7 +92,8 @@ const priceSlice = createSlice({
       if (existingProduct && existingProduct.quantity > 1) {
         existingProduct.quantity -= 1;
         state.productQuantities[productId] = (state.productQuantities[productId] || 0) - 1;
-        // Update total price here
+        
+        // Update total price 
         state.totalPrice = parseFloat(
           state.cart.reduce((total, product) => total - product.price * product.quantity, 0).toFixed(2)
         );
@@ -106,7 +107,7 @@ const priceSlice = createSlice({
         const updatedCart = state.cart.filter((product) => product.id !== productId);
         state.cart = updatedCart;
 
-        // Update total price here
+        // Update total price 
         state.totalPrice = parseFloat(
           updatedCart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
         );
