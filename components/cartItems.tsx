@@ -94,7 +94,15 @@ function CartItems() {
                   <div className='flex gap-10'>
                     <div className='text-center'>
                       <p>${product.price * product.quantity}</p>
-                      <span className='flex gap-4 items-align'><button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' onClick={() => minus1Handler(product.id)}>-</button><p>{product.quantity}</p><button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' onClick={() => plus1Handler(product.id)}>+</button></span>
+                      <span className='flex gap-4 items-center'>
+                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='minus-one' onClick={() => minus1Handler(product.id)}>
+                  -
+                </button>
+                <span>{product.quantity}</span>
+                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='plus-one' onClick={() => plus1Handler(product.id)}>
+                  +
+                </button>
+              </span>
                     </div>
                     <button onClick={() => deleteFromCartHandler(product.id)}>
                       <Image src='/icons8-delete.svg' height={20} width={20} alt='remove-product-icon' />

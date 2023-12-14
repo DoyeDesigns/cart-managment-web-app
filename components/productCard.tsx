@@ -1,14 +1,12 @@
 'use client'
 
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import data from '../services/products-list-data.json'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
-import { addToCart, removeFromCart, updateTotalPrice, plus1, minus1, deleteFromCart } from '@/state/counter/priceSlice';
+import { addToCart, updateTotalPrice, plus1, minus1, deleteFromCart } from '@/state/counter/priceSlice';
 import { increament, decreament } from '@/state/counter/counterSlice';
-
-// const numOfProduct
 
 interface Product {
   id: number;
@@ -32,10 +30,6 @@ function ProductsList() {
   const addToCartHandler = (product: Product) => {
     dispatch(addToCart(product));
     dispatch(updateTotalPrice())
-  };
-
-  const removeFromCartHandler = (productId: number) => {
-    dispatch(removeFromCart(productId));
   };
 
   const deleteFromCartHandler = (productId: number) => {

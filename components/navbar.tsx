@@ -11,7 +11,7 @@ export default function NavBar() {
     return (
         <div className="navbar bg-base-100 sticky top-0 z-10 bg-neutral-900 mb-10">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl text-white">Saikou Kicks</a>
+                <a href='/' className="btn btn-ghost text-xl text-white">Saikou Kicks</a>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
