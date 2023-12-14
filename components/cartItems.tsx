@@ -76,7 +76,7 @@ function CartItems() {
       {cart.length === 0 ? (
         <div className='text-center'>
           <p>Your cart is empty.</p>
-          <a href='./' className='btn btn-primary p-3 my-4'>start shopping!</a>
+          <a href='/' className='btn btn-primary p-3 my-4'>start shopping!</a>
         </div>
       ) : (
         <div>
@@ -97,7 +97,7 @@ function CartItems() {
                       <span className='flex gap-4 items-align'><button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' onClick={() => minus1Handler(product.id)}>-</button><p>{product.quantity}</p><button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' onClick={() => plus1Handler(product.id)}>+</button></span>
                     </div>
                     <button onClick={() => deleteFromCartHandler(product.id)}>
-                      <Image src='./icons8-delete.svg' height={20} width={20} alt='remove-product-icon' />
+                      <Image src='/icons8-delete.svg' height={20} width={20} alt='remove-product-icon' />
                     </button>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ function CartItems() {
                 contentLabel="Proceed to payment and coupon"
               >
                 <div className='flex justify-end'>
-                  <button onClick={closeModal}><Image src='./icons8-close.svg' alt='close icon' height={20} width={20} /></button>
+                  <button onClick={closeModal}><Image src='/icons8-close.svg' alt='close icon' height={20} width={20} /></button>
                 </div>
 
                 <div>
