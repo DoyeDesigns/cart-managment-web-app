@@ -59,14 +59,16 @@ function CouponInput() {
           </div>
         )}
       </div>
-      <div className="flex gap-4 items-end">
+      <div className="md:flex gap-4 items-end">
         <div>
           <div className="label">
             <span className="label-text text-xs">Add your coupon code here</span>
           </div>
           <input onChange={(e) => setCouponValue(e.target.value)} type="text" placeholder="Enter coupon" className="input input-bordered w-full max-w-xs" />
         </div>
-        <button className="btn btn-primary rounded-md" onClick={useCoupon}>{coupon ? 'Remove coupon' : 'Use coupon'}</button>
+        <div className="flex justify-center mt-4 md:mt-0">
+          <button className="btn btn-primary rounded-md w-32 mx-auto" onClick={useCoupon}>{coupon ? 'Remove coupon' : 'Use coupon'}</button>
+        </div>
       </div>
     </label>
   )
