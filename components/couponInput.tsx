@@ -58,7 +58,7 @@ function CouponInput() {
             <p>Coupon discount Amount: ${coupon.discountAmount.toFixed(2)}</p>
           </div>
         )}
-      </div>z
+      </div>
       <div className="flex gap-4 items-end">
         <div>
           <div className="label">
