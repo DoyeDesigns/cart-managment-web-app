@@ -11,7 +11,7 @@ function CartPage() {
   return (
     <div className='flex justify-center'>
       <div>
-      <h2 className='text-center'>Your Shopping Cart ({totalQuantity})</h2>
+      <h2 className='text-center text-lg mt-6 font-semibold'>Your Shopping Cart ({totalQuantity})</h2>
       <div className="divider"></div>
         <CartItems />
       </div>
