@@ -83,26 +83,26 @@ function CartItems() {
           <ul>
             {cart.map((product) => (
               <li key={product.id} className='drop-shadow rounded-md my-4'>
-                <div className='flex gap-20 justify-between max-w-4xl p-3'>
-                  <div className='flex gap-4'>
-                    <Image src={product.image} alt='' width={50} height={50} />
+                <div className='md:flex gap-20 justify-between max-w-4xl p-3'>
+                  <div className='flex items-center gap-4'>
+                    <Image src={product.image} alt='' width={60} height={60} />
                     <div className=''>
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                     </div>
                   </div>
-                  <div className='flex gap-10'>
-                    <div className='text-center'>
-                      <p>${product.price * product.quantity}</p>
+                  <div className='flex justify-center gap-10 mt-5 md:mt-0'>
+                    <div className='flex md:block gap-4 items-center text-center'>
+                      <p className='order-last font-medium'>${product.price * product.quantity}</p>
                       <span className='flex gap-4 items-center'>
-                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='minus-one' onClick={() => minus1Handler(product.id)}>
-                  -
-                </button>
-                <span>{product.quantity}</span>
-                <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='plus-one' onClick={() => plus1Handler(product.id)}>
-                  +
-                </button>
-              </span>
+                        <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='minus-one' onClick={() => minus1Handler(product.id)}>
+                          -
+                        </button>
+                        <span>{product.quantity}</span>
+                        <button className='p-1 w-6 rounded-md hover:bg-gray-200 text-lg' id='plus-one' onClick={() => plus1Handler(product.id)}>
+                          +
+                        </button>
+                      </span>
                     </div>
                     <button onClick={() => deleteFromCartHandler(product.id)}>
                       <Image src='/icons8-delete.svg' height={20} width={20} alt='remove-product-icon' />
@@ -112,7 +112,7 @@ function CartItems() {
               </li>
             ))}
           </ul>
-          <div className='flex justify-between items-center'>
+          <div className='flex gap-5 justify-between items-center px-3 md:px-0'>
             <div>
               <button className='btn btn-primary' onClick={openModal}>Proceed to checkout</button>
               <Modal
@@ -131,7 +131,7 @@ function CartItems() {
                 </div>
               </Modal>
             </div>
-            <p>Totoal: <span className='text-lg'>${totalPrice}</span></p>
+            <p className='font-semibold'>Total: <span className='text-lg'>${totalPrice}</span></p>
           </div>
         </div>
       )}
